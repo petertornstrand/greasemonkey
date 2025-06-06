@@ -15,4 +15,7 @@
 // @todo Move the ticket update avatar to the left of the update and make it bigger (48x48)
 // @todo Add the "Related ticket" functionality to the sidebar. If there are no related tickets just display
 //   the button "Mark a ticket as blocking this ticket" but change the text to "Add sub-ticket".
+
+// Breake these changes out into a separate script.
+// @todo Change the header background color to #150547 (same as DeployHQ)
 // @todo Change the .site-header__organisation to instead display the company logo.
