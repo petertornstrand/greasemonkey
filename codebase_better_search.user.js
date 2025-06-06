@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name		Codebase: Better search
-// @version		1
-// @grant		none
-// @match		https://code.happiness.se/projects/*/*
-// @match		https://happiness.codebasehq.com/projects/*/*
+// @name	Codebase: Better search
+// @version	1
+// @grant	none
+// @match	https://code.happiness.se/projects/*/*
+// @match	https://happiness.codebasehq.com/projects/*/*
 // ==/UserScript==
 
 /**
@@ -15,11 +15,10 @@ function setAttributes(el, attrs) {
   }
 }
 
-
 /**
  * Add stylesheet to page.
  */
-function GM_addStyle(aCss) {
+function addStyle(aCss) {
   'use strict';
   let head = document.getElementsByTagName('head')[0];
   if (head) {
@@ -32,8 +31,7 @@ function GM_addStyle(aCss) {
   return null;
 };
 
-
-GM_addStyle(`
+addStyle(`
 .site-header > .container { display: flex; flex-direction: row; }
 .site-header__left { margin-left: 0; margin-right: auto; }
 .site-header__right { margin-left: auto; margin-right: 0; }
@@ -71,8 +69,10 @@ const input = document.querySelector('#q');
 input.setAttribute('placeholder', 'Search ' + projectName.getAttribute('title') + '...');
 
 // Add hidden project input to search form.
+const url = new URL(document.URL);
+const projectId = url.pathname.split('/')[2]
 const projectInput = document.createElement('input');
-setAttributes(projectInput, {'type': 'hidden', 'name': 'projects[]', 'value': 'ki-profile'});
+setAttributes(projectInput, {'type': 'hidden', 'name': 'projects[]', 'value': projectId});
 const form = search.querySelector('form');
 form.append(projectInput);
 
