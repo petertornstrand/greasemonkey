@@ -12,3 +12,9 @@
 // @todo Move common functions to this file, mainly "Element.prototyp.setAttributes"
 //   and "addStyle" functions. Add @require to files using these functions.
 // @todo Add @namespace to all files
+
+async function main() {
+  // Code goes here...
+}
+
+main();
