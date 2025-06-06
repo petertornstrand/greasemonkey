@@ -20,6 +20,7 @@ function headerLogoAndBackground() {
             background-repeat: no-repeat;
             background-size: auto 36px;
             text-indent: -999em;
+            margin: 0;
         }
     `);
 }
