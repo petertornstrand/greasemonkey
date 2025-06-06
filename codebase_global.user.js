@@ -1,5 +1,6 @@
 // ==UserScript==
 // @name	Codebase: Global improvements
+// @namespace https://www.happiness.se
 // @version	1
 // @grant	none
 // @match	https://code.happiness.se/*
@@ -8,3 +9,6 @@
 
 // @todo Change the header background color to #150547 (same as DeployHQ)
 // @todo Change the .site-header__organisation to instead display the company logo.
+// @todo Move common functions to this file, mainly "Element.prototyp.setAttributes"
+//   and "addStyle" functions. Add @require to files using these functions.
+// @todo Add @namespace to all files
