@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name	Codebase: Better search
+// @name	Codebase: Projects improvements
 // @version	1
 // @grant	none
 // @match	https://code.happiness.se/projects/*/*
