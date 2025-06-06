@@ -7,7 +7,7 @@
 // ==/UserScript==
 
 // @todo Move .js-ticket-properties to container .right (remember to scope new CSS not to affect properties
-//   at the bottom of a ticket)
+//   at the bottom of a ticket). The properties list should be "sticky".
 // @todo Move .ThreadMeta to container .right, after .js-ticket-properties
 // @todo Move information from "Related milestone" box (.box box--sidebar) into .js-ticket-properties
 // @todo Change box with info "This ticket can be viewed by anyone..." into an icon (lock open, locked closed)
