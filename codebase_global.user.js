@@ -7,15 +7,22 @@
 // @match	    https://happiness.codebasehq.com/*
 // ==/UserScript==
 
-// @todo Change the header background color to #150547 (same as DeployHQ)
 // @todo Change the .site-header__organisation to instead display the company logo.
-// @todo Add @namespace to all files
+
+/**
+ * Change header background color.
+ */
+function changeHeaderBackgroundColor() {
+    addStyle(`
+        .site-header { background-color: #150547; }
+    `);
+}
 
 /**
  * Entry point for script.
  */
 async function main() {
-  // Code goes here...
+    changeHeaderBackgroundColor();
 }
 
 // Run it.
