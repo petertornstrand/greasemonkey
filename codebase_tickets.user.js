@@ -1,11 +1,12 @@
 // ==UserScript==
-// @name		Codebase: Ticket improvements
+// @name		Codebase: Tickets improvements
 // @version	1
 // @grant		none
 // @match		https://code.happiness.se/projects/*/tickets/*
 // @match		https://happiness.codebasehq.com/projects/*/tickets/*
 // ==/UserScript==
 
+// @todo Move code from codebase_copy_ticket_reference.user.js into this file.
 // @todo Move .js-ticket-properties to container .right (remember to scope new CSS not to affect properties
 //   at the bottom of a ticket). The properties list should be "sticky".
 // @todo Move .ThreadMeta to container .right, after .js-ticket-properties
@@ -16,6 +17,6 @@
 // @todo Add the "Related ticket" functionality to the sidebar. If there are no related tickets just display
 //   the button "Mark a ticket as blocking this ticket" but change the text to "Add sub-ticket".
 
-// Breake these changes out into a separate script.
+// Breake these changes out into a separate script, codebase_global.user.js
 // @todo Change the header background color to #150547 (same as DeployHQ)
 // @todo Change the .site-header__organisation to instead display the company logo.
