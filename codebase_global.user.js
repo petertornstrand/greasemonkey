@@ -2,7 +2,7 @@
 // @name	    Codebase: Global improvements
 // @namespace   https://www.happiness.se
 // @require 	https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     3
+// @version     4
 // @grant	    none
 // @match	    https://code.happiness.se/*
 // @match	    https://happiness.codebasehq.com/*
