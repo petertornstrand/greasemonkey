@@ -9,9 +9,9 @@
 /**
  * Set multiple attributes on element.
  */
-function setAttributes(el, attrs) {
+Element.prototype.setAttributes = function(attrs) {
   for(var key in attrs) {
-    el.setAttribute(key, attrs[key]);
+    this.setAttribute(key, attrs[key]);
   }
 }
 
@@ -72,7 +72,7 @@ input.setAttribute('placeholder', 'Search ' + projectName.getAttribute('title') 
 const url = new URL(document.URL);
 const projectId = url.pathname.split('/')[2]
 const projectInput = document.createElement('input');
-setAttributes(projectInput, {'type': 'hidden', 'name': 'projects[]', 'value': projectId});
+projectInput.setAttributes({'type': 'hidden', 'name': 'projects[]', 'value': projectId});
 const form = search.querySelector('form');
 form.append(projectInput);
 
