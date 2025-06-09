@@ -18,6 +18,7 @@ function headerLogoAndBackground() {
         .site-header { background-color: #150547; }
         .site-header__organisation {
             margin: 0;
+	    padding: 0;
         }
         .site-header__organisation a {
         	display: block;
