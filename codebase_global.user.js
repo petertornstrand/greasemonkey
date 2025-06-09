@@ -8,6 +8,8 @@
 // @match	    https://happiness.codebasehq.com/*
 // ==/UserScript==
 
+// @todo Add the global search to the same location as in project context?
+
 /**
  * Change header background color.
  */
