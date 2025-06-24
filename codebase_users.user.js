@@ -2,7 +2,7 @@
 // @name       Codebase: Users improvements
 // @namespace  https://www.happiness.se
 // @require    https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version    2
+// @version    3
 // @grant      none
 // @match      https://code.happiness.se/users/*
 // @match      https://happiness.codebasehq.com/users/*
@@ -58,6 +58,7 @@ function listTicketsPerClient(tickets) {
     h2.appendChild(document.createTextNode(results[0].client));
     
     var ul = document.createElement('ul');
+	  ul.classList.add('events');
     
     results.forEach(function (elem) {
       var li = document.createElement('li');
@@ -66,6 +67,7 @@ function listTicketsPerClient(tickets) {
     });
     
     var container = document.createElement('div');
+	  container.classList.add('feed');
     var wrapper = document.querySelector('div.activity');
     container.appendChild(h2);
     container.appendChild(ul);
