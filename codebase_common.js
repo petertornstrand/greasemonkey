@@ -6,3 +6,13 @@ Element.prototype.setAttributes = function(attrs) {
     this.setAttribute(key, attrs[key]);
   }
 }
+
+const getProjectId = () => {
+    const url = new URL(document.URL);
+	return url.pathname.replace(/^\/+|\/+$/g, '').split('/')[1];
+}
+
+const getTicketId = () => {
+    const url = new URL(document.URL);
+	return url.pathname.replace(/^\/+|\/+$/g, '').split('/')[3];
+}
