@@ -6,19 +6,3 @@ Element.prototype.setAttributes = function(attrs) {
     this.setAttribute(key, attrs[key]);
   }
 }
-
-/**
- * Add stylesheet to page.
- */
-function addStyle(css) {
-  'use strict';
-  let head = document.getElementsByTagName('head')[0];
-  if (head) {
-    let style = document.createElement('style');
-    style.setAttribute('type', 'text/css');
-    style.textContent = css;
-    head.appendChild(style);
-    return style;
-  }
-  return null;
-};

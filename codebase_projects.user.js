@@ -2,7 +2,7 @@
 // @name		Codebase: Projects improvements
 // @namespace	https://www.happiness.se
 // @require 	https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version		1
+// @version		2
 // @grant		none
 // @match		https://code.happiness.se/projects/*/*
 // @match		https://happiness.codebasehq.com/projects/*/*
@@ -12,7 +12,7 @@
  * Add full-text search to project.
  */
 function projectSearch() {
-	addStyle(`
+	GM_addStyle(`
 		.site-header > .container { display: flex; flex-direction: row; }
 		.site-header__left { margin-left: 0; margin-right: auto; }
 		.site-header__right { margin-left: auto; margin-right: 0; }

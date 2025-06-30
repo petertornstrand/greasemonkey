@@ -2,7 +2,7 @@
 // @name	    Codebase: Global improvements
 // @namespace   https://www.happiness.se
 // @require 	https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     5
+// @version     6
 // @grant	    none
 // @match	    https://code.happiness.se/*
 // @match	    https://happiness.codebasehq.com/*
@@ -14,7 +14,7 @@
  * Change header background color.
  */
 function headerLogoAndBackground() {
-    addStyle(`
+    GM_addStyle(`
         .site-header { background-color: #150547; }
         .site-header__organisation {
             margin: 0;
