@@ -2,8 +2,8 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     2
-// @grant       none
+// @version     3
+// @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
 // ==/UserScript==
@@ -60,24 +60,6 @@ function copyTicketReference() {
     element.appendChild(btnCopy);
 }
 
-/**
- * Change the size of the avatar and it's position.
- */
-function avatarPositionSize() {
-    addStyle(`
-        .Post__header { position: relative; }
-        .Post_avatar {
-            float: none;
-            width: 48px;
-            height: 48px;
-            position: absolute;
-            top: 4px;
-            left: -56px;
-        }
-        .Post_meta { margin-left: 0; }
-    `);
-}
-
 function addSubTicket() {
     // This is not working, event listeners are lost when moving the element.
     const btn = document.querySelector('.js-related-tickets-relationships');
@@ -90,7 +72,6 @@ function addSubTicket() {
  */
 async function main() {
     copyTicketReference();
-    avatarPositionSize();
     //addSubTicket();
 }
 

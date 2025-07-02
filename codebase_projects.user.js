@@ -2,8 +2,8 @@
 // @name		Codebase: Projects improvements
 // @namespace	https://www.happiness.se
 // @require 	https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version		2
-// @grant		none
+// @version		3
+// @grant		GM_addStyle
 // @match		https://code.happiness.se/projects/*/*
 // @match		https://happiness.codebasehq.com/projects/*/*
 // ==/UserScript==
