@@ -27,6 +27,11 @@ function headerLogoAndBackground() {
             background-size: auto 36px;
         	text-indent: -999em;
         }
+
+ 	#content .right {
+  		position: sticky;
+    		top: 0;
+	}
     `);
 }
 
