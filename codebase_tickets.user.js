@@ -61,10 +61,11 @@ function copyTicketReference() {
 }
 
 function addSubTicket() {
-    // This is not working, event listeners are lost when moving the element.
-    const btn = document.querySelector('.js-related-tickets-relationships');
-    const sidebar = document.querySelector('.right');
-    sidebar.appendChild(btn);
+  const parent = document.querySelector('.js-related-tickets-relationships');
+  const btn = parent.querySelector('a');
+  const sidebar = document.querySelector('.right');
+  parent.removeChild(btn);
+  sidebar.appendChild(btn);
 }
 
 function jumpToLastComment() {
@@ -92,7 +93,7 @@ function jumpToLastComment() {
  */
 async function main() {
     copyTicketReference();
-    //addSubTicket();
+    addSubTicket();
     jumpToLastComment();
 }
 
