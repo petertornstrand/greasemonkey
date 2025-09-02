@@ -67,12 +67,33 @@ function addSubTicket() {
     sidebar.appendChild(btn);
 }
 
+function jumpToLastComment() {
+  GM_addStyle(`
+    .ThreadMeta { display: flex; gap: 8px; align-items: left; }
+    .ThreadMeta__item.icon-current { cursor: pointer; }
+  `);
+
+  const allComments = document.querySelectorAll('.Post.Post--full');
+  const wrapper = document.querySelector('.ThreadMeta');
+  const div = document.createElement('div');
+  div.classList.add('ThreadMeta__item', 'icon', 'icon-current');
+  const link = document.createElement('a');
+  link.innerText = 'Goto last comment (' + allComments.length + ' comments)';
+  link.addEventListener('click', function (e) {
+    const lastComment = document.querySelector('.Post.Post--full:last-of-type');
+    document.getElementById(lastComment.id).scrollIntoView();
+  });
+  div.appendChild(link);
+  wrapper.appendChild(div);
+}
+
 /**
  * Entry point for script.
  */
 async function main() {
     copyTicketReference();
     //addSubTicket();
+    jumpToLastComment();
 }
 
 // Runt it.
