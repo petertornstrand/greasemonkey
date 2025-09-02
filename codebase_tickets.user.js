@@ -63,7 +63,7 @@ function copyTicketReference() {
 function addSubTicket() {
   const parent = document.querySelector('.js-related-tickets-relationships');
   const btn = parent.querySelector('a');
-  const sidebar = document.querySelector('.right');
+  const sidebar = document.querySelector('.right .sidebar__module:first-child');
   parent.removeChild(btn);
   sidebar.appendChild(btn);
 }
