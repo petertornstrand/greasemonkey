@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	    Codebase: Global improvements
 // @namespace   https://www.happiness.se
-// @version     9
+// @version     10
 // @grant       GM_addStyle
 // @match	    https://code.happiness.se/*
 // @match	    https://happiness.codebasehq.com/*
