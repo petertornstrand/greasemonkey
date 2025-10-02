@@ -16,6 +16,7 @@
 //   display to the right of the ticket title or perhaps part of .js-ticket-properties
 // @todo Add the "Related ticket" functionality to the sidebar. If there are no related tickets just display
 //   the button "Mark a ticket as blocking this ticket" but change the text to "Add sub-ticket".
+// @todo Add posibility to use a JSON ticket meta-data object, { "ticket-meta-data": { "branch": "3434-my-feature-branch", "sub-issues": [3433, 3432, 3431] }}, in the description of a ticket.
 
 /**
  * Add a copy ticket reference button to the right of the ticket title.
