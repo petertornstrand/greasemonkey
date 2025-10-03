@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     5
+// @version     6
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -64,7 +64,6 @@ function jumpToLastComment() {
   GM_addStyle(`
     .ThreadMeta { display: flex; gap: 8px; align-items: left; }
     .ThreadMeta__box.icon-current { cursor: pointer; }
-    .col-branch { background-color: #ec6400; color: white; }
   `);
 
   const allComments = document.querySelectorAll('.Post.Post--full');
@@ -84,7 +83,7 @@ function jumpToLastComment() {
 function displayTagsInTop() {
   GM_addStyle(`
     .ThreadMeta { display: flex; gap: 8px; align-items: left; }
-    .col-branch { background-color: #ec6400; color: white; }
+    .col-branch { background-color: #ec6400; color: white; text-transform: lowercase; }
   `);
   const tags = document.querySelectorAll('.TagList .TagList__item span.js-tags-text');
   const wrapper = document.querySelector('.ThreadMeta');
