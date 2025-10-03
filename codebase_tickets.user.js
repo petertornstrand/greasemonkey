@@ -72,13 +72,13 @@ function addSubTicket() {
 function jumpToLastComment() {
   GM_addStyle(`
     .ThreadMeta { display: flex; gap: 8px; align-items: left; }
-    .ThreadMeta__item.icon-current { cursor: pointer; }
+    .ThreadMeta__box.icon-current { cursor: pointer; }
   `);
 
   const allComments = document.querySelectorAll('.Post.Post--full');
   const wrapper = document.querySelector('.ThreadMeta');
   const div = document.createElement('div');
-  div.classList.add('icon', 'icon-current');
+  div.classList.add('ThreadMeta__box', 'icon', 'icon-current');
   const link = document.createElement('a');
   link.innerText = 'Goto last comment (' + allComments.length + ' comments)';
   link.addEventListener('click', function (e) {
@@ -93,7 +93,7 @@ function displayTagsInTop() {
   const tags = document.querySelectorAll('.TagList .TagList__item span.js-tags-text');
   const wrapper = document.querySelector('.ThreadMeta');
   const div = document.createElement('div');
-  div.classList.add('icon', 'icon-tags');
+  div.classList.add('ThreadMeta__box', 'icon', 'icon-tags');
   tags.forEach(function (e) {
     let elem = e.cloneNode(true);
     elem.classList.replace('js-tags-text', 'TicketProperties__tag');
