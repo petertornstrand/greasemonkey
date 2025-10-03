@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     3
+// @version     4
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -78,7 +78,7 @@ function jumpToLastComment() {
   const allComments = document.querySelectorAll('.Post.Post--full');
   const wrapper = document.querySelector('.ThreadMeta');
   const div = document.createElement('div');
-  div.classList.add('ThreadMeta__item', 'icon', 'icon-current');
+  div.classList.add('icon', 'icon-current');
   const link = document.createElement('a');
   link.innerText = 'Goto last comment (' + allComments.length + ' comments)';
   link.addEventListener('click', function (e) {
@@ -89,6 +89,20 @@ function jumpToLastComment() {
   wrapper.appendChild(div);
 }
 
+function displayTagsInTop() {
+  const tags = document.querySelectorAll('.TagList .TagList__item span.js-tags-text');
+  const wrapper = document.querySelector('.ThreadMeta');
+  const div = document.createElement('div');
+  div.classList.add('icon', 'icon-tags');
+  tags.forEach(function (e) {
+    let elem = e.cloneNode(true);
+    elem.classList.replace('js-tags-text', 'TicketProperties__tag');
+    elem.classList.add('col-grey');
+    div.appendChild(elem);
+  });
+  wrapper.appendChild(div);
+}
+
 /**
  * Entry point for script.
  */
@@ -96,6 +110,7 @@ async function main() {
     copyTicketReference();
     addSubTicket();
     jumpToLastComment();
+    displayTagsInTop();
 }
 
 // Runt it.
