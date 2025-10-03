@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     4
+// @version     5
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -16,7 +16,6 @@
 //   display to the right of the ticket title or perhaps part of .js-ticket-properties
 // @todo Add the "Related ticket" functionality to the sidebar. If there are no related tickets just display
 //   the button "Mark a ticket as blocking this ticket" but change the text to "Add sub-ticket".
-// @todo Add posibility to use a JSON ticket meta-data object, { "ticket-meta-data": { "branch": "3434-my-feature-branch", "sub-issues": [3433, 3432, 3431] }}, in the description of a ticket.
 
 /**
  * Add a copy ticket reference button to the right of the ticket title.
@@ -61,18 +60,11 @@ function copyTicketReference() {
     element.appendChild(btnCopy);
 }
 
-function addSubTicket() {
-  const parent = document.querySelector('.js-related-tickets-relationships');
-  const btn = parent.querySelector('a');
-  const sidebar = document.querySelector('.right .sidebar__module:first-child');
-  parent.removeChild(btn);
-  sidebar.appendChild(btn);
-}
-
 function jumpToLastComment() {
   GM_addStyle(`
     .ThreadMeta { display: flex; gap: 8px; align-items: left; }
     .ThreadMeta__box.icon-current { cursor: pointer; }
+    .col-branch { background-color: #ec6400; color: white; }
   `);
 
   const allComments = document.querySelectorAll('.Post.Post--full');
@@ -90,27 +82,46 @@ function jumpToLastComment() {
 }
 
 function displayTagsInTop() {
+  GM_addStyle(`
+    .ThreadMeta { display: flex; gap: 8px; align-items: left; }
+    .col-branch { background-color: #ec6400; color: white; }
+  `);
   const tags = document.querySelectorAll('.TagList .TagList__item span.js-tags-text');
   const wrapper = document.querySelector('.ThreadMeta');
   const div = document.createElement('div');
   div.classList.add('ThreadMeta__box', 'icon', 'icon-tags');
   tags.forEach(function (e) {
     let elem = e.cloneNode(true);
+    if (elem.innerText.match(/^branch:/g)) {
+      console.log(elem.innerText);
+      elem.innerText = elem.innerText.replace(/^branch:/g, '');
+      elem.classList.add('col-branch', 'icon', 'icon-branch');
+    }
+    else {
+      elem.classList.add('col-grey');
+    }
     elem.classList.replace('js-tags-text', 'TicketProperties__tag');
-    elem.classList.add('col-grey');
     div.appendChild(elem);
   });
   wrapper.appendChild(div);
+}
+
+function addSubTicket() {
+  const parent = document.querySelector('.js-related-tickets-relationships');
+  const btn = parent.querySelector('a');
+  const sidebar = document.querySelector('.right .sidebar__module:first-child');
+  parent.removeChild(btn);
+  sidebar.appendChild(btn);
 }
 
 /**
  * Entry point for script.
  */
 async function main() {
-    copyTicketReference();
-    addSubTicket();
-    jumpToLastComment();
-    displayTagsInTop();
+  copyTicketReference();
+  addSubTicket();
+  jumpToLastComment();
+  displayTagsInTop();
 }
 
 // Runt it.
