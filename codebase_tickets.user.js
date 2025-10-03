@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     6
+// @version     7
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -64,12 +64,13 @@ function jumpToLastComment() {
   GM_addStyle(`
     .ThreadMeta { display: flex; gap: 8px; align-items: left; }
     .ThreadMeta__box.icon-current { cursor: pointer; }
+    .col-branch { background-color: #ec6400; color: white; }
   `);
 
   const allComments = document.querySelectorAll('.Post.Post--full');
   const wrapper = document.querySelector('.ThreadMeta');
   const div = document.createElement('div');
-  div.classList.add('ThreadMeta__box', 'icon', 'icon-current');
+  div.classList.add('ThreadMeta__box', 'ThreadMeta__box--comments', 'icon', 'icon-current');
   const link = document.createElement('a');
   link.innerText = 'Goto last comment (' + allComments.length + ' comments)';
   link.addEventListener('click', function (e) {
@@ -83,21 +84,27 @@ function jumpToLastComment() {
 function displayTagsInTop() {
   GM_addStyle(`
     .ThreadMeta { display: flex; gap: 8px; align-items: left; }
+    .ThreadMeta__box--tags span { margin-right: 8px; }
     .col-branch { background-color: #ec6400; color: white; text-transform: lowercase; }
+    .col-note { background-color: #38aa19; color: white; }
   `);
   const tags = document.querySelectorAll('.TagList .TagList__item span.js-tags-text');
   const wrapper = document.querySelector('.ThreadMeta');
   const div = document.createElement('div');
-  div.classList.add('ThreadMeta__box', 'icon', 'icon-tags');
+  div.classList.add('ThreadMeta__box', 'ThreadMeta__box--tags');
   tags.forEach(function (e) {
     let elem = e.cloneNode(true);
+    elem.classList.add('icon');
     if (elem.innerText.match(/^branch:/g)) {
-      console.log(elem.innerText);
       elem.innerText = elem.innerText.replace(/^branch:/g, '');
-      elem.classList.add('col-branch', 'icon', 'icon-branch');
+      elem.classList.add('col-branch', 'icon-branch');
+    }
+    else if (elem.innerText.match(/^note:/g)) {
+      elem.innerText = elem.innerText.replace(/^note:/g, '');
+      elem.classList.add('col-note', 'icon-status_id');
     }
     else {
-      elem.classList.add('col-grey');
+      elem.classList.add('col-grey', 'icon-tags');
     }
     elem.classList.replace('js-tags-text', 'TicketProperties__tag');
     div.appendChild(elem);
