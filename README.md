@@ -11,11 +11,12 @@ The scripts are split into different files each dealing with a separate scope of
 
 ## Global
 
-Todo...
+Changes the colors and logo.
 
 ## Project
 
-Todo...
+Adds a "project search" function to all projects. Uses the default global search but scoped to the current
+project. The search is made available on all project pages.
 
 ## Tickets
 
@@ -28,7 +29,7 @@ Todo...
 
 ## User
 
-Todo...
+Adds a list at the top of the user page that lists all tickets worked on the current day grouped by project.
 
 ## User script mananger
 
