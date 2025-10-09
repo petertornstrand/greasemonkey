@@ -104,6 +104,7 @@ function displayTagsInTop() {
       elem.classList.add('col-note', 'icon-status_id');
     }
     else {
+      elem.innerText = elem.innerText.replace(/_/g, ' ');
       elem.classList.add('col-grey', 'icon-tags');
     }
     elem.classList.replace('js-tags-text', 'TicketProperties__tag');
