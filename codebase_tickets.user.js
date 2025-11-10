@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     7
+// @version     8
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -115,7 +115,7 @@ function displayTagsInTop() {
 
 function addSubTicket() {
   const parent = document.querySelector('.js-related-tickets-relationships');
-  const btn = parent.querySelector('a');
+  const btn = parent.querySelector('a[rel="new-blocking"]');
   const sidebar = document.querySelector('.right .sidebar__module:first-child');
   parent.removeChild(btn);
   sidebar.appendChild(btn);
