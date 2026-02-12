@@ -62,15 +62,22 @@ function projectSearch() {
 	searchButton.parentElement.classList.add('hidden');
 }
 
+
+/**
+ * Only display open tickets by default in the ticket list.
+ */
+function addOpenFilterToTickets() {
+  const link = document.querySelector('li.main-menu__item > a[href$="/tickets?report=all"]');
+  link.setAttribute('href', link.getAttribute('href') + '&query=status:open');
+}
+
 /**
  * Entry point for script.
  */
 async function main() {
 	projectSearch();
+  addOpenFilterToTickets();
 }
 
 // Run it.
 main();
-
-
-
