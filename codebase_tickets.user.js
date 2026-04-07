@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     8
+// @version     9
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -87,6 +87,7 @@ function displayTagsInTop() {
     .ThreadMeta__box--tags span { margin-right: 8px; }
     .col-branch { background-color: #ec6400; color: white; text-transform: lowercase; }
     .col-note { background-color: #38aa19; color: white; }
+    .col-task { background-color: #fd0000; color: white; }
   `);
   const tags = document.querySelectorAll('.TagList .TagList__item span.js-tags-text');
   const wrapper = document.querySelector('.ThreadMeta');
@@ -102,6 +103,11 @@ function displayTagsInTop() {
     else if (elem.innerText.match(/^note:/g)) {
       elem.innerText = elem.innerText.replace(/^note:/g, '');
       elem.classList.add('col-note', 'icon-status_id');
+    }
+    else if (elem.innerText.match(/^task:/g)) {
+      elem.innerText = elem.innerText.replace(/^task:/g, '');
+      elem.innerText = elem.innerText.replace(/[\-\_]/g, ' ');
+      elem.classList.add('col-task', 'icon-yes');
     }
     else {
       elem.innerText = elem.innerText.replace(/_/g, ' ');
