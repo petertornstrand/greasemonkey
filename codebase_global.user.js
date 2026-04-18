@@ -44,6 +44,7 @@ function headerLogoAndBackground() {
 	  }
 	  .styled-content__heading { margin-top: 35px; }
 	  .styled-content__heading:first-child { margin-top: 0; }
+	  .is-status-completed { text-decoration: line-through; }
 	`);
 }
 
