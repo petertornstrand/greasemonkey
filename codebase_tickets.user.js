@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     9
+// @version     10
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -90,6 +90,9 @@ function displayTagsInTop() {
     .col-task { background-color: #fd0000; color: white; }
   `);
   const tags = document.querySelectorAll('.TagList .TagList__item span.js-tags-text');
+  if (!tags) {
+    return;
+  }
   const wrapper = document.querySelector('.ThreadMeta');
   const div = document.createElement('div');
   div.classList.add('ThreadMeta__box', 'ThreadMeta__box--tags');
@@ -127,6 +130,22 @@ function addSubTicket() {
   sidebar.appendChild(btn);
 }
 
+function markCommentsWithTasks() {
+  GM_addStyle(`
+    .Post--full.has-tasks { position: relative; }
+    .Post--full.has-tasks::before { content: "⚠️"; position: absolute; top: 10px; left: -25px; }
+    .Post--full.has-tasks .box--medium { border-color: #f4e6c8; }
+    .Post--full.has-tasks .Post__header { background-color: #ffffcc; }
+  `);
+  const comments = document.querySelectorAll('.Post--full:has(li.todo)');
+  if (!comments) {
+    return;
+  }
+  comments.forEach(function (e) {
+    e.classList.add('has-tasks');
+  });
+}
+
 /**
  * Entry point for script.
  */
@@ -135,6 +154,7 @@ async function main() {
   addSubTicket();
   jumpToLastComment();
   displayTagsInTop();
+  markCommentsWithTasks();
 }
 
 // Runt it.
