@@ -36,7 +36,7 @@ function headerLogoAndBackground() {
     #sub-header {
       position: sticky;
       top: 94px;
-      z-index: 4;
+      z-index: 1;
     }
 	  #content .right {
 		  position: sticky;
