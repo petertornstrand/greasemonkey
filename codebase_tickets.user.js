@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     12
+// @version     13
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -158,6 +158,16 @@ function moveTicketProperties() {
   const properties = document.querySelector('.Thread__header');
   const sidebar = document.querySelector('.right');
   sidebar.prepend(properties);
+
+  const milestone = document.querySelector('.related-milestone__heading > a');
+  if (milestone) {
+    const container = document.querySelector('ul.TicketProperties');
+    const template = document.createElement('template');
+    template.innerHTML = '<li class="TicketProperties__column"><h3 class="TicketProperties__title">Milestone</h3><p class="TicketProperties__value">' + milestone.outerHTML + '</p></li>';
+    container.appendChild(template.content.firstElementChild);
+    const box = milestone.parentElement.parentElement.parentElement.parentElement;
+    box.parentElement.removeChild(box);
+  }
 }
 
 /**
