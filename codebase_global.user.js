@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name	    Codebase: Global improvements
 // @namespace   https://www.happiness.se
-// @version     13
+// @version     11
 // @grant       GM_addStyle
 // @match	    https://code.happiness.se/*
 // @match	    https://happiness.codebasehq.com/*
@@ -40,7 +40,7 @@ function headerLogoAndBackground() {
     }
 	  #content .right {
 		  position: sticky;
-		  top: 191px;
+		  top: 183px;
 	  }
 	  .styled-content__heading { margin-top: 35px; }
 	  .styled-content__heading:first-child { margin-top: 0; }
