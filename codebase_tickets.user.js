@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     11
+// @version     12
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -66,7 +66,6 @@ function copyTicketReference() {
 
 function jumpToLastComment() {
   GM_addStyle(`
-    .ThreadMeta { display: flex; gap: 8px; align-items: left; }
     .ThreadMeta__box.icon-current { cursor: pointer; }
     .col-branch { background-color: #ec6400; color: white; }
   `);
@@ -87,8 +86,6 @@ function jumpToLastComment() {
 
 function displayTagsInTop() {
   GM_addStyle(`
-    .ThreadMeta { display: flex; gap: 8px; align-items: left; }
-    .ThreadMeta__box--tags span { margin-right: 8px; }
     .col-branch { background-color: #ec6400; color: white; text-transform: lowercase; }
     .col-note { background-color: #38aa19; color: white; }
     .col-task { background-color: #fd0000; color: white; }
@@ -127,10 +124,8 @@ function displayTagsInTop() {
 }
 
 function addSubTicket() {
-  const parent = document.querySelector('.js-related-tickets-relationships');
-  const btn = parent.querySelector('a[rel="new-blocking"]');
+  const btn = document.querySelector('a[rel="new-blocking"]');
   const sidebar = document.querySelector('.right .sidebar__module:first-child');
-  parent.removeChild(btn);
   sidebar.appendChild(btn);
 }
 
@@ -150,6 +145,20 @@ function markCommentsWithTasks() {
   });
 }
 
+function moveTicketProperties() {
+  GM_addStyle(`
+  .TicketProperties.u-text-center { text-align: left; }
+  .TicketProperties__column { float: none; width: auto; display: flex; }
+  .TicketProperties--constrained .TicketProperties__column { padding: 0; }
+  .TicketProperties__title { font-size: 100%; text-transform: none; flex: 1; }
+  .TicketProperties__value, .TicketProperties__select { flex: 3; }
+  .ThreadMeta { display: flex; gap: 10px; flex-direction: column; }
+  `);
+  const properties = document.querySelector('.Thread__header');
+  const sidebar = document.querySelector('.right');
+  sidebar.prepend(properties);
+}
+
 /**
  * Entry point for script.
  */
@@ -159,6 +168,7 @@ async function main() {
   jumpToLastComment();
   displayTagsInTop();
   markCommentsWithTasks();
+  moveTicketProperties();
 }
 
 // Runt it.
