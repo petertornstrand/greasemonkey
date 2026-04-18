@@ -147,13 +147,13 @@ function markCommentsWithTasks() {
 
 function moveTicketProperties() {
   GM_addStyle(`
-  .TicketProperties.u-text-center { text-align: left; }
-  .TicketProperties__column { float: none; width: auto; display: flex; }
-  .TicketProperties--constrained .TicketProperties__column { padding: 0; }
-  .TicketProperties__title { font-size: 100%; text-transform: none; flex: 1; }
-  .TicketProperties__value, .TicketProperties__select { flex: 3; }
-  .ThreadMeta { display: flex; gap: 10px; flex-direction: column; }
-  .ThreadMeta__box--tags { display: flex; gap: 6px; }
+  .right .TicketProperties.u-text-center { text-align: left; }
+  .right .TicketProperties__column { float: none; width: auto; display: flex; }
+  .right .TicketProperties--constrained .TicketProperties__column { padding: 0; }
+  .right .TicketProperties__title { font-size: 100%; text-transform: none; flex: 1; }
+  .right .TicketProperties__value, .TicketProperties__select { flex: 3; }
+  .right .ThreadMeta { display: flex; gap: 10px; flex-direction: column; }
+  .right .ThreadMeta__box--tags { display: flex; gap: 6px; }
   `);
   const properties = document.querySelector('.Thread__header');
   const sidebar = document.querySelector('.right');
