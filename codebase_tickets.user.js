@@ -153,6 +153,7 @@ function moveTicketProperties() {
   .TicketProperties__title { font-size: 100%; text-transform: none; flex: 1; }
   .TicketProperties__value, .TicketProperties__select { flex: 3; }
   .ThreadMeta { display: flex; gap: 10px; flex-direction: column; }
+  .ThreadMeta__box--tags { display: flex; gap: 6px; }
   `);
   const properties = document.querySelector('.Thread__header');
   const sidebar = document.querySelector('.right');
