@@ -25,9 +25,10 @@ function copyTicketReference() {
       #sub-header h2 span { color: inherit; }
       #sub-header h2 { display: flex; gap: 8px; align-items: center; }
       .Thread__subject { display: none; }
-      #sub-header h2 span.TicketId { display: inline-block; font-size: 75%; padding: 0 8px; border-radius: 4px; color: #fff; }
+      #sub-header h2 span.TicketId { flex-shrink: 0; display: inline-block; font-size: 75%; padding: 0 8px; border-radius: 4px; color: #fff; }
       #sub-header h2 span.TicketId:before, #sub-header h2 span.TicketTitle:before { content: ""; }
-      .CopyButton { cursor: pointer; border: 0; width: 20px; height: 20px; background: url('data:image/svg+xml,<svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="%23555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path clip-rule="evenodd" d="M17.676 14.248a2.928 2.928 0 0 1-2.928 2.928h-7.32A2.928 2.928 0 0 1 4.5 14.248v-7.32A2.928 2.928 0 0 1 7.428 4h7.32a2.928 2.928 0 0 1 2.928 2.928v7.32Z"/><path d="M10.252 20h7.32a2.928 2.928 0 0 0 2.928-2.928v-7.32"/></g></svg>'); }
+      #sub-header h2 span.TicketTitle { overflow: hidden; }
+      .CopyButton { flex-shrink: 0; cursor: pointer; border: 0; width: 20px; height: 20px; background: url('data:image/svg+xml,<svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><g stroke="%23555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path clip-rule="evenodd" d="M17.676 14.248a2.928 2.928 0 0 1-2.928 2.928h-7.32A2.928 2.928 0 0 1 4.5 14.248v-7.32A2.928 2.928 0 0 1 7.428 4h7.32a2.928 2.928 0 0 1 2.928 2.928v7.32Z"/><path d="M10.252 20h7.32a2.928 2.928 0 0 0 2.928-2.928v-7.32"/></g></svg>'); }
     `);
 
     // Get ticket status.
@@ -54,7 +55,7 @@ function copyTicketReference() {
     btnCopy.classList.add('CopyButton');
     btnCopy.setAttribute('title', 'Copy ticket reference');
     btnCopy.addEventListener('click', function (e) {
-    	navigator.clipboard.writeText(`#${id} ${text}`);
+      navigator.clipboard.writeText(`#${id} ${text}`);
     });
 
     header.appendChild(spanId);
