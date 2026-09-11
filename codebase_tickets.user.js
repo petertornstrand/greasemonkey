@@ -2,7 +2,7 @@
 // @name        Codebase: Tickets improvements
 // @namespace   https://www.happiness.se
 // @require     https://raw.githubusercontent.com/petertornstrand/greasemonkey/refs/heads/main/codebase_common.js
-// @version     15
+// @version     16
 // @grant       GM_addStyle
 // @match       https://code.happiness.se/projects/*/tickets/*
 // @match       https://happiness.codebasehq.com/projects/*/tickets/*
@@ -69,7 +69,7 @@ function copyTicketReference() {
  */
 function copyTicketLink() {
     GM_addStyle(`
-      .CopyButtonLink { cursor: pointer; border: 0; width: 20px; height: 20px; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M11.947 19a4.948 4.948 0 0 1-3.499-8.446l5.106-5.105a4.948 4.948 0 0 1 6.998 6.998l-.553.552-1.415-1.413.557-.557a2.95 2.95 0 0 0-.004-4.166 3.02 3.02 0 0 0-4.17 0l-5.104 5.104a2.947 2.947 0 0 0 0 4.17 3.02 3.02 0 0 0 4.17 0l1.414 1.414a4.92 4.92 0 0 1-3.5 1.449"/><path d="M19.947 17a4.948 4.948 0 0 1-3.499-8.446L17.001 8l1.414 1.415-.552.552a2.95 2.95 0 0 0 0 4.169 3.02 3.02 0 0 0 4.17 0l5.105-5.105a2.95 2.95 0 0 0 0-4.168 3.02 3.02 0 0 0-4.17 0l-1.414-1.415a4.948 4.948 0 0 1 6.998 6.998l-5.104 5.103a4.92 4.92 0 0 1-3.5 1.45"/><path d="M24 30H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4v2H4v20h20V18h2v10a2 2 0 0 1-2 2"/><path d="M0 0h32v32H0z" style="fill:none"/></svg>'); }
+      .CopyButtonLink { cursor: pointer; border: 0; width: 20px; height: 20px; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="%23555" stroke-linecap="round" stroke-width="2" d="M9.165 17.65c-.24.224-.425.374-.615.484a3 3 0 0 1-3 0c-.342-.198-.67-.527-1.328-1.184-.658-.658-.987-.987-1.184-1.329a3 3 0 0 1 0-3c.197-.342.526-.67 1.184-1.328L7.05 8.464c.658-.657.986-.986 1.328-1.183a3 3 0 0 1 3 0c.342.197.671.526 1.329 1.183.657.658.986.987 1.184 1.329a3 3 0 0 1 0 3c-.11.19-.26.375-.483.615m-2.816-2.816c-.224.24-.374.425-.483.615a3 3 0 0 0 0 3c.197.342.526.671 1.184 1.329s.986.986 1.328 1.183a3 3 0 0 0 3 0c.342-.197.67-.526 1.329-1.184l2.828-2.828c.658-.658.986-.986 1.184-1.328a3 3 0 0 0 0-3c-.198-.342-.526-.671-1.184-1.329s-.986-.986-1.328-1.184a3 3 0 0 0-3 0c-.19.11-.376.26-.615.484"/></svg>'); }
     `);
 
     const url = new URL(document.URL);
